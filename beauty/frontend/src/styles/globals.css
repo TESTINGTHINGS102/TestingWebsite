@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-luxury-black text-luxury-pearl font-sans;
+    cursor: none;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-rose-500/30 text-luxury-pearl;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-rose-400;
+  }
+}
+
+@layer components {
+  .fluid-cursor {
+    @apply fixed top-0 left-0 pointer-events-none z-[9999];
+    transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .magnetic-target {
+    @apply inline-block transition-transform duration-300 ease-out;
+  }
+
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .glass-panel-strong {
+    @apply bg-white/[0.08] backdrop-blur-2xl border border-white/[0.12] shadow-2xl;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-champagne-300 via-champagne-500 to-champagne-300 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-rose {
+    @apply bg-gradient-to-r from-rose-200 via-rose-400 to-rose-300 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-shimmer {
+    @apply bg-gradient-to-r from-luxury-pearl via-rose-300 to-luxury-pearl bg-clip-text text-transparent;
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .image-mask-liquid {
+    @apply relative overflow-hidden;
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M42.5,-64.1C56.3,-58.9,69.7,-50.2,77.4,-37.6C85.1,-25,87.1,-8.4,83.1,6.3C79.1,21,69.1,33.8,58.2,46.1C47.3,58.4,35.5,70.3,21.5,74.9C7.5,79.5,-8.7,76.8,-22.4,69.9C-36.1,63,-47.3,52,-55.7,38.8C-64.1,25.6,-69.7,10.3,-69.6,-5C-69.5,-20.3,-63.7,-35.6,-53.6,-46.4C-43.5,-57.2,-29.2,-63.5,-14.9,-66.3C-0.6,-69.1,13.7,-68.4,28.7,-69.3C43.7,-70.2,59.4,-72.4,42.5,-64.1Z' transform='translate(100 100)' /%3E%3C/svg%3E");
+    mask-size: cover;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M42.5,-64.1C56.3,-58.9,69.7,-50.2,77.4,-37.6C85.1,-25,87.1,-8.4,83.1,6.3C79.1,21,69.1,33.8,58.2,46.1C47.3,58.4,35.5,70.3,21.5,74.9C7.5,79.5,-8.7,76.8,-22.4,69.9C-36.1,63,-47.3,52,-55.7,38.8C-64.1,25.6,-69.7,10.3,-69.6,-5C-69.5,-20.3,-63.7,-35.6,-53.6,-46.4C-43.5,-57.2,-29.2,-63.5,-14.9,-66.3C-0.6,-69.1,13.7,-68.4,28.7,-69.3C43.7,-70.2,59.4,-72.4,42.5,-64.1Z' transform='translate(100 100)' /%3E%3C/svg%3E");
+    -webkit-mask-size: cover;
+  }
+
+  .glow-ring {
+    @apply absolute rounded-full pointer-events-none;
+    box-shadow: 0 0 60px rgba(244, 63, 94, 0.15),
+                0 0 120px rgba(244, 63, 94, 0.08);
+  }
+
+  .shimmer-overlay {
+    @apply absolute inset-0 pointer-events-none overflow-hidden;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.03) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .noise-overlay {
+    @apply absolute inset-0 pointer-events-none opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-12 {
+    transform: rotateY(12deg);
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-luxury-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-rose-500/30 rounded-full hover:bg-rose-500/50 transition-colors;
+}
